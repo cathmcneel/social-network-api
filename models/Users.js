@@ -1,4 +1,5 @@
 const { Schema, model } = require('mongoose');
+const dateFormat = require('../utils/dateFormat');
 
 
 const FriendSchema = new Schema(
@@ -12,12 +13,12 @@ const FriendSchema = new Schema(
       type: String,
       required: true,
     },
-    // createdAt: {
-    //   type: Date,
-    //   default: Date.now,
-    //   //use getter method to timestamp the query
+    createdAt: {
+      type: Date,
+      default: Date.now,
+      get: createdAtVal => dateFormat(createdAtVal)
     
-    // }
+    }
   },
   {
     toJSON: {

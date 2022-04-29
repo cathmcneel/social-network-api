@@ -2,6 +2,21 @@ const { Thoughts, Users } = require('../models');
 
 
 const thoughtsController = {
+    // get all thoughts
+    getAllThoughts(req, res) {
+        Thoughts.find({})
+        .populate({
+            path: 'Thoughts',
+            select: '-__v'
+        })
+        .select('-__v')
+        .sort({ _id:-1 })
+        .then(UserData => res.json(UserData))
+        .catch(err => {
+            console.log(err);
+            res.sendStatus(400);
+        });
+    },
     //add thought to user
     addThought({ params, body }, res) {
         console.log(body);

@@ -3,8 +3,12 @@ const {
   addThought,
   removeThought,
   addReaction,
-  removeReaction
+  removeReaction,
+  getAllThoughts
 } = require('../../controllers/thoughts-controller');
+
+// api/thoughts
+router.route('/').get(getAllThoughts);
 
 // /api/thoughts/<userId>
 router.route('/:userId').post(addThought);
