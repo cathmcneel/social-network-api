@@ -14,4 +14,4 @@
 
 ## Thanks for reading, enjoy and connect!
 
-## [View a demo video here](public/Social-demo.mp4)
+## [View a demo video here](public/social-2-demo.mp4)
