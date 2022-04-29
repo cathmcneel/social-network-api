@@ -61,6 +61,19 @@ const Userscontroller = {
         Users.findOneAndDelete({ _id: params.id })
         .then(UserData => res.json(UserData))
         .catch(err => res.json(err));
+    },
+
+    //Friends
+    addFriend({ params, body }, res) {
+        Users.findOneAndUpdate({ _id: params.friendid }, {$push: { friends: body } }, {new: true})
+        .then(UserData => {
+            if(!UserData) {
+            res.status(404).json({ Message: "No User found with this Id!" });
+            return;
+            }
+            res.json(UserData);
+        })
+        .catch(err => res.json(err));
     }
 };
 

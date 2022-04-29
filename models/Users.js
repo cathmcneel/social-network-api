@@ -1,5 +1,32 @@
 const { Schema, model } = require('mongoose');
 
+
+const FriendSchema = new Schema(
+  {
+    // set custom id to avoid confusion with parent comment _id
+    friendId: {
+      type: Schema.Types.ObjectId,
+      default: () => new Types.ObjectId()
+    },
+    username: {
+      type: String,
+      required: true,
+    },
+    // createdAt: {
+    //   type: Date,
+    //   default: Date.now,
+    //   //use getter method to timestamp the query
+    
+    // }
+  },
+  {
+    toJSON: {
+      getters: true
+    }
+  }
+);
+
+
 const UserSchema = new Schema({
     username: {
       type: String,
